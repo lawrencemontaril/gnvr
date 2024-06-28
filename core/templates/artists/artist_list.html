@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Artists List
+{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 lg:px-8 py-12">
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-3xl font-bold">Artists List</h1>
+        <a href="{% url 'artist-create' %}" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-colors duration-300">Create Artist</a>
+    </div>
+
+    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for artist in object_list %}
+        <li class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-bold mb-2">{{ artist.name }}</h2>
+            <a href="{% url 'artist-detail' artist.pk %}" class="block mt-2 text-blue-600 hover:underline">View Artist</a>
+        </li>
+        {% empty %}
+        <li class="text-gray-700">No artists found.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

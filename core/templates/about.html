@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    About
+{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 lg:px-8 py-12">
+    <h1 class="text-3xl font-bold mb-6">About Our Music Player Application</h1>
+    
+    <div class="mb-8">
+        <img src="{% static 'images/about-banner.jpg' %}" alt="About Banner" class="rounded-xl shadow-xl w-full">
+    </div>
+
+    <section class="mb-8">
+        <h2 class="text-2xl font-bold mb-4">Our Mission</h2>
+        <p class="text-lg text-gray-700">
+            We are dedicated to enhancing the music listening experience by providing a web-based application that focuses on convenience, superior playback interfaces, and vibrant community engagement.
+        </p>
+    </section>
+
+    <section class="mb-8">
+        <h2 class="text-2xl font-bold mb-4">Key Features</h2>
+        <ul class="list-disc list-inside text-lg text-gray-700">
+            <li>Convenient access to your favorite music.</li>
+            <li>Enjoy an enhanced playback interface tailored for music lovers.</li>
+            <li>Engage with a vibrant community by synchronizing lyrics, commenting, sharing songs, and adding friends.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 class="text-2xl font-bold mb-4">Join Us</h2>
+        <p class="text-lg text-gray-700 mb-6">
+            Experience the social aspect of music like never before. Join our platform to connect with others who share your musical tastes and deepen your passion for music.
+        </p>
+        <a href="{% url 'sign_up' %}" class="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg shadow-md hover:bg-blue-700 transition-colors duration-300">Get Started</a>
+    </section>
+</div>
+{% endblock %}

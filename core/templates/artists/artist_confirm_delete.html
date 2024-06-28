@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Confirm Delete: {{ object.name }}
+{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 lg:px-8 py-12">
+    <h1 class="text-3xl font-bold mb-6">Confirm Delete: {{ object.name }}</h1>
+
+    <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-xl font-bold mb-2">Are you sure you want to delete '{{ object.name }}'?</h2>
+        
+        <form method="post" action="{% url 'artist-delete' object.pk %}" class="mt-4">
+            {% csrf_token %}
+            <button type="submit" class="inline-block bg-red-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-red-700 transition-colors duration-300">Delete Artist</button>
+            <a href="{% url 'artist-list' %}" class="inline-block bg-gray-300 text-gray-700 px-6 py-3 rounded-lg ml-4">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

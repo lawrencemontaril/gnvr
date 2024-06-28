@@ -1,0 +1,29 @@
+{% load static tailwind_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+    {% tailwind_css %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body class="bg-zinc-50 text-zinc-800 font-sans">
+    {% include 'components/navbar.html' %}
+
+    <div class="min-h-dvh">
+      {% block content %}
+
+      {% endblock %}
+    </div>
+    <footer class="bg-zinc-800 text-white py-6 mt-12">
+      <div class="container mx-auto text-center">
+        <p>&copy; 2024 GNVR. All rights reserved.</p>
+      </div>
+    </footer>
+</body>
+</html>

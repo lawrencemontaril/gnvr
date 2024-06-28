@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Create Album
+{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 lg:px-8 py-12">
+    <h1 class="text-3xl font-bold mb-6">Create Album</h1>
+    <form method="post" class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+        {% csrf_token %}
+        
+        <div class="mb-4">
+            <label for="name" class="block text-sm font-medium text-gray-700">Album Name</label>
+            <input type="text" name="name" id="name" placeholder="Enter album name"
+                   class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+        </div>
+
+        <div class="mb-4">
+            <label for="artist" class="block text-sm font-medium text-gray-700">Artist</label>
+            <select name="artist" id="artist" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+                <option value="" disabled selected>Select artist</option>
+                {% for artist in artists %}
+                    <option value="{{ artist.id }}">{{ artist.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-colors duration-300">
+            Create Album
+        </button>
+    </form>
+</div>
+{% endblock %}

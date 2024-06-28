@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 py-8">
+    <h1 class="text-3xl font-semibold mb-4">Hello, {{ user.first_name }} {{ user.last_name }}</h1>
+
+    <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h2 class="text-xl font-semibold mb-4">Account Information</h2>
+        <p class="mb-2"><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Username:</strong> {{ user.username }}</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-semibold mb-4">Manage Password</h2>
+            <p>Change your password to keep your account secure.</p>
+            <a href="{% url 'password_change' %}" class="block mt-4 p-2 px-4 bg-sky-500 text-sky-50 rounded-md focus:ring focus:ring-sky-500/50 transition-all duration-150 ease-in-out hover:bg-sky-600">
+                Change Password
+            </a>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-semibold mb-4">Manage Data</h2>
+            <p>View and manage your data:</p>
+            <ul class="mt-4 space-y-2">
+                <li><a href="{% url 'artist-list' %}" class="text-blue-600 hover:underline">Manage Artists</a></li>
+                <li><a href="{% url 'album-list' %}" class="text-blue-600 hover:underline">Manage Albums</a></li>
+                <li><a href="{% url 'track-list' %}" class="text-blue-600 hover:underline">Manage Tracks</a></li>
+                <!-- Add more links as needed -->
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

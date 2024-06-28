@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Tracks List
+{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 lg:px-8 py-12">
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-3xl font-bold">Tracks List</h1>
+        <a href="{% url 'track-create' %}" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-colors duration-300">Create Track</a>
+    </div>
+
+    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% for track in object_list %}
+        <li class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-bold mb-2">{{ track.name }}</h2>
+            <p class="text-gray-700">Album: {{ track.album.name }} by {{ track.album.artist.name }}</p>
+            <a href="{% url 'track-detail' track.pk %}" class="block mt-2 text-blue-600 hover:underline">View Track</a>
+        </li>
+        {% empty %}
+        <li class="text-gray-700">No tracks found.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

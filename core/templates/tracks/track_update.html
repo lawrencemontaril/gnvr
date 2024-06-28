@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Update Track: {{ object.name }}
+{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 lg:px-8 py-12">
+    <h1 class="text-3xl font-bold mb-6">Update Track: {{ object.name }}</h1>
+
+    <form method="post" class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+        {% csrf_token %}
+        <div class="mb-4">
+            <label for="album" class="block text-sm font-medium text-gray-700">Album</label>
+            <select id="album" name="album" 
+                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+                {% for album in albums %}
+                <option value="{{ album.id }}" {% if album.id == object.album.id %}selected{% endif %}>{{ album.name }} by {{ album.artist.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-4">
+            <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter name" 
+                   value="{{ object.name }}"
+                   class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50">
+        </div>
+
+        <button type="submit" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-colors duration-300">Update Track</button>
+    </form>
+</div>
+{% endblock %}

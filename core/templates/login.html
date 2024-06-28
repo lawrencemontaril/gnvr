@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Homepage
+{% endblock %}
+
+{% block content %}
+<form method="post" class="shadow-lg max-w-sm mt-16 mx-auto p-6 bg-white border border-gray-200 rounded-2xl">
+  {% csrf_token %}
+
+  <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Log in</h1>
+
+  <div class="mb-6">
+      <label class="block text-sm font-medium mb-2 text-gray-700" for="username">Username</label>
+      <input class="rounded-lg border border-gray-300 block text-sm w-full p-3 focus:ring focus:ring-blue-500 focus:border-blue-500" type="text" name="username" id="username" />
+  </div>
+
+  <div class="mb-6">
+      <label class="block text-sm font-medium mb-2 text-gray-700" for="password">Password</label>
+      <input class="rounded-lg border border-gray-300 block text-sm w-full p-3 focus:ring focus:ring-blue-500 focus:border-blue-500" type="password" name="password" id="password" />
+  </div>
+
+  <button class="block py-3 px-6 w-full text-base font-semibold text-white transition-all duration-150 ease-in-out focus:ring focus:ring-blue-500 bg-blue-500 hover:bg-blue-600 rounded-lg" type="submit">Login</button>
+</form>
+{% endblock %}

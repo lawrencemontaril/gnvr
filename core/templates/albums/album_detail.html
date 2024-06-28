@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Album Detail: {{ object.name }}
+{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 lg:px-8 py-12">
+    <h1 class="text-3xl font-bold mb-6">Album Detail: {{ object.name }}</h1>
+
+    <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-xl font-bold mb-2">{{ object.name }}</h2>
+        <p class="text-gray-700">Artist: {{ object.artist.name }}</p>
+        <a href="{% url 'album-update' object.pk %}" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-colors duration-300">Edit Album</a>
+        <a href="{% url 'album-delete' object.pk %}" class="inline-block bg-red-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-red-700 transition-colors duration-300">Delete Album</a>
+    </div>
+</div>
+{% endblock %}
